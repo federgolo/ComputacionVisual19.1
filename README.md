@@ -20,9 +20,10 @@ Emplear dos [canvas](https://processing.org/reference/PGraphics.html), uno para 
 
 Complete la tabla:
 
-| Integrante | github nick |
-|------------|-------------|
-|            |             |
+|   Integrante   | github nick |
+|----------------|-------------|
+| Federico Gómez |  federgolo  |
+| Jonathan Campo |  joacampora |
 
 ## Discusión
 
