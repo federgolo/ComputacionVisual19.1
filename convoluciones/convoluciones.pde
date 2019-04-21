@@ -7,9 +7,26 @@ int w = 120;
 // It's possible to convolve the image with many different 
 // matrices to produce different effects. This is a high-pass 
 // filter; it accentuates the edges. 
-float[][] matrix = { { -1, -1, -1 },
-                     { -1,  9, -1 },
-                     { -1, -1, -1 } }; 
+float[][] highlight_edges = {{ -1, -1, -1 },
+                             { -1,  9, -1 },
+                             { -1, -1, -1 } }; 
+                             
+float[][] negative_edges =  {{ 0,  1, 0},
+                             { 1, -4, 1},
+                             { 0,  1, 0} };   
+                             
+float[][] relief_edges = {{ -2, -1, 0},
+                          { -1,  1, 1},
+                          {  0,  1, 2} };  
+                          
+float[][] saturation = {{ 1,   2,   1   },
+                        { 2/6, 4/6, 2/16},
+                        { 1/6, 2/6, 1/6 } };
+                        
+                             
+//////////////////////////////////////////CHANGE HERE THE MATRIX NAME///////////////////////////////////////////////////////
+float[][] matrix= relief_edges;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void setup() {
   size(1020, 360);
@@ -39,7 +56,7 @@ void draw() {
   int xstart = constrain(mouseX - w/2, 0, myImg.width);
   int ystart = constrain(mouseY - w/2, 0, myImg.height);
   int xend = constrain(mouseX + w/2, 0, myImg.width);
-  int yend = constrain(mouseY + w/2, 0, myImg.height);
+  int yend = constrain(mouseY + w/2, 0, myImg.height); 
   int matrixsize = matrix.length;
   pg1.loadPixels();
   // Begin our loop for every pixel in the smaller image
@@ -67,9 +84,6 @@ void draw() {
   image(pg2, myImg.width*2+90, 30);
 
 }
-
-
-  
 
 
 color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
