@@ -3,7 +3,7 @@ from itertools import groupby
 
 def setup():
     size(939, 375)
-    background(255, 250, 0)
+    background(105, 200, 190)
     global pg1, pg2, pg3, myImage, imgWidth, imgHeight, greys, brights, movie
     myImage = loadImage("nba.jpg")
     imgWidth = myImage.width

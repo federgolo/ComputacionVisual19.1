@@ -26,7 +26,7 @@ void draw() {
   pg2.background(myImage);
   pg2.endDraw();
 
-  noLoop();
+  noLoop(); 
   pg2.loadPixels();
   for (int i=0; i<pg2.pixels.length; i++) {
     // Here we go through every pixel of the image, get their RGB values and then overwrite them with the average of the three
