@@ -1,7 +1,7 @@
 import processing.video.*;
 
 PImage myImg;
-PGraphics pg1, pg2, pg3, pg4, pg5, pg6;
+PGraphics pg1, pg2, pg3, pg4, pg5, pg6, pg;
 int imgWidth;
 int imgHeight;
 int w = 120;
@@ -39,9 +39,9 @@ float[][] saturation = {{ 1, 2, 1 },
 float[][] matrix;
 
 void setup() {
-  size(1020, 660);
-  frameRate(10);
-  // background(255, 255, 0)
+  size(1020, 630);
+  frameRate(14);
+
   myImg = loadImage("nba.jpg");
   imgWidth = myImg.width;
   imgHeight = myImg.height;
@@ -51,15 +51,21 @@ void setup() {
   pg4 = createGraphics(320, 240);
   pg5 = createGraphics(320, 240);
   pg6 = createGraphics(320, 240);
+  pg = createGraphics(50, 50);
 
-  // Step 3. Initialize Capture object.
+  // Initialize Capture object.
   video = new Capture(this, 320, 240);
 
-  // Step 4. Start the capturing process.
+  // Start the capturing process.
   video.start();
 }
 
 void draw() {
+
+  //pg.beginDraw();
+  //pg.text(frameRate, 5, 10);
+  //pg.endDraw();
+  //image(pg, 5, 15);
 
   switch(state) {
   case 0:
@@ -128,6 +134,8 @@ void draw() {
 
   pg4.beginDraw();
   pg4.background(video);
+  pg4.fill(0);
+  pg4.text(frameRate + " fps" , 0, 10);
   pg4.endDraw();
 
   pg5.beginDraw();
@@ -136,7 +144,7 @@ void draw() {
     video.read();
     video.loadPixels();
     pg5.loadPixels();
-    for (int x = 0; x < video.width / 2; x++) {
+    for (int x = 0; x < video.width ; x++) {
       for (int y = 0; y < video.height; y++ ) {
         color c = convolution(x, y, matrix, matrixsize, video);
         int loc = x + y*video.width;
@@ -144,13 +152,13 @@ void draw() {
       }
     }
 
-    for (int x = video.width / 2; x < video.width; x++) {
-      for (int y = 0; y < video.height; y++ ) {
-        int loc = x + y*video.width;
-        int avg = int((red(video.pixels[loc]) + green(video.pixels[loc]) + blue(video.pixels[loc])) / 3);
-        pg5.pixels[loc] = color(avg);
-      }
-    }
+    //for (int x = video.width / 2; x < video.width; x++) {
+    //  for (int y = 0; y < video.height; y++ ) {
+    //    int loc = x + y*video.width;
+    //    int avg = int((red(video.pixels[loc]) + green(video.pixels[loc]) + blue(video.pixels[loc])) / 3);
+    //    pg5.pixels[loc] = color(avg);
+    //  }
+    //}
     pg5.updatePixels();
   }
   pg5.endDraw();
@@ -165,7 +173,6 @@ void draw() {
     pg6.pixels[i] = color(avg);
   }
   pg6.updatePixels();
-
   pg6.endDraw();
 
   image(pg4, 20, 360);
