@@ -26,13 +26,7 @@ Complete la tabla:
 | Jonathan Campo |  joacampora |
 
 ## Discusión
-* Para la conversión a escala de grises, inicialmente, se tomaron lor valores (r, g, b) de cada pixel en la imagen/video y se retprnó un promedio entre los tres componentes para ada pixel, obteniendo así la tonalidad gris que representa cada tono en cada pixel. Despues se apliaron difeerentes fórmulas para obtener diferentes escalas.
-* Al momento de aplicar las máscaras, creamos un arreglo con diferentes matrices de convolución y este filtro se le aplica a la imagen/video en un segmento o en su totalidad, haciendo recorrer la matriz sobre el canvas y aplicando la convolución sobre cada pixel.
-* El histograma es obtenido, en el caaso de la imagen convertida a escala de grises, reorriendo el arreglo de pixeles y llevando la cuenta de cuantas veces se repite cada tono (entre 0 y 255), para depues poder graficar con que frecuencia aparece cada uno(el histograma).
+* Para la conversión a escala de grises, inicialmente, se tomaron lor valores (r, g, b) de cada pixel en la imagen/video y se retornó un promedio entre los tres componentes para cada pixel, obteniendo así la tonalidad gris que representa cada tono en cada pixel. Despues se aplicaron diferentes fórmulas para obtener diferentes escalas.
+* Al momento de aplicar las máscaras, creamos un arreglo con diferentes matrices de convolución, este filtro se le aplica a la imagen/video en un segmento o en su totalidad, haciendo recorrer la matriz sobre el canvas y aplicando la convolución sobre cada pixel.
+* El histograma es obtenido, en el caaso de la imagen convertida a escala de grises, recorriendo el arreglo de pixeles y llevando la cuenta de cuantas veces se repite cada tono (entre 0 y 255), para depues poder graficar con que frecuencia aparece cada uno(el histograma).
 * Ya teniendo el histograma, diseñamos un sistema de scroll para marcar un rango en el histograma, cuando este rango es cambiado, la imagen es segmentada: Muestra los pixeles cuyo tono se envcuentre dentro del rango seleccionado y los demás pixeles son "apagados".
-* (solo para video) Medición de la [eficiencia computacional](https://processing.org/reference/frameRate.html) para las operaciones realizadas.
-
-## Entrega
-
-* Hacer [fork](https://help.github.com/articles/fork-a-repo/) de la plantilla. Plazo: 28/4/19 a las 24h.
-* (todos los integrantes) Presentar el trabajo presencialmente en la siguiente sesión de taller.
