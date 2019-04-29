@@ -46,10 +46,6 @@ void draw() {
   }
   pg2.updatePixels();
 
-  // Now we save the second canvas (the one we modified) to an image file and proceed to use it as the background for the third canvas.
-  pg2.save("bw.png");
-  // pg2.save("/home/federico/Unal/VisualComputing/soft-imaging_ws/workshop/data/bwnba.jpg");
-  bwImage = loadImage("bw.png");
   int histMax = max(hist);
   pg3.beginDraw();
   for (int i = 0; i < pg3.width; i++) {
@@ -182,4 +178,3 @@ class HScrollbar {
     return spos ;
   }
 }
-
