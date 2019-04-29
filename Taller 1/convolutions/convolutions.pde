@@ -1,9 +1,9 @@
-PImage myImg, bwImage;
+PImage myImg;
 PGraphics pg1, pg2, pg3;
 int imgWidth;
 int imgHeight;
 int w = 120;
-int state =0;
+int state = 0;
 
 // It's possible to convolve the image with many different 
 // matrices to produce different effects. This is a high-pass 
