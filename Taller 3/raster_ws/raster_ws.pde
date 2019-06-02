@@ -17,13 +17,14 @@ int n = 4;
 boolean triangleHint = true;
 boolean gridHint = true;
 boolean debug = true;
-
+ 
 // 3. Use FX2D, JAVA2D, P2D or P3D
 String renderer = P3D;
 
 // 4. Window dimension
-int dim = 10;
+int dim = 9;
 
+int low, high;
 void settings() {
   size(int(pow(2, dim)), int(pow(2, dim)), renderer);
 }
@@ -63,6 +64,7 @@ void setup() {
 
 void draw() {
   background(0);
+  fill(255,0,0);
   stroke(0, 255, 0);
   if (gridHint)
     scene.drawGrid(scene.radius(), (int)pow(2, n));
@@ -78,20 +80,41 @@ void draw() {
 
 // Implement this function to rasterize the triangle.
 // Coordinates are given in the node system which has a dimension of 2^n
-void triangleRaster() {
-  // node.location converts points from world to node
-  // here we convert v1 to illustrate the idea
-  if (debug) {
-    pushStyle();
-    stroke(255, 255, 0, 125);
-    point(round(node.location(v1).x()), round(node.location(v1).y()));
-    popStyle();
-  }
+void triangleRaster() {    
+  int paso = floor(width/pow(2,n));
+  pushStyle();
+  stroke(255, 255, 0, 0);
+  
+  for(int x = low; x < high; x += paso){
+    for(int y=low; y<high; y+= paso){
+      Vector p = new Vector((x+(paso/n)),(y+(paso/n)));
+      if (inside(v1, v2 ,v3, p)){
+        float w= edgeFunction(v1, v2, p) + edgeFunction(v2, v3, p) + edgeFunction(v3, v1, p);
+        float r = 255 * edgeFunction(v1, v2, p)/w;
+        float g = 255 * edgeFunction(v2, v3, p)/w;
+        float b = 255 * edgeFunction(v3, v1, p)/w; 
+        fill(r, g, b, 150); 
+        rect(round(node.location(p).x()-0.25), round(node.location(p).y()-0.25),1,1);
+      } 
+    }
+  }    
+  popStyle();
+}
+
+float edgeFunction(Vector a, Vector b, Vector c){
+  return ((c.x() - a.x()) * (b.y() - a.y()) - (c.y() - a.y()) * (b.x() - a.x())); 
+} 
+
+boolean inside(Vector V0, Vector V1, Vector V2, Vector p){
+      float w0 = edgeFunction(V0, V1, p);
+      float w1 = edgeFunction(V1, V2, p);
+      float w2 = edgeFunction(V2, V0, p); 
+      return ((w0 >= 0 && w1 >= 0 && w2 >= 0) || (w0 < 0 && w1 < 0 && w2 < 0));
 }
 
 void randomizeTriangle() {
-  int low = -width/2;
-  int high = width/2;
+  low = -width/2;
+  high = width/2;
   v1 = new Vector(random(low, high), random(low, high));
   v2 = new Vector(random(low, high), random(low, high));
   v3 = new Vector(random(low, high), random(low, high));
