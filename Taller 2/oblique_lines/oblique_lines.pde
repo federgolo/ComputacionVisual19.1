@@ -3,10 +3,11 @@ color sky_blue = #95b3e7;
 color gray = #7f7f7f;
 float theta = -PI/4.0;
 float x, y;
+char illusion = 'c';
 
 void setup() {
   size(750, 475);
-    noStroke();
+  noStroke();
 
   for (int i=0; i<8; i++) {
     fill(gray);
@@ -22,72 +23,122 @@ void setup() {
 }
 
 void draw() {
-  //translate(width/2, height/2);
 
-
+  // Rotates the canvas 45 degrees clockwise in orer to draw key elements to the illusion.
   rotate(PI/4.0);
 
+  if (keyPressed) {
+    if (key == 's') {
+      illusion='s';
+    } else if (key == 'c') {
+      illusion='c';
+    }
+  }
+
   for (int i=1; i<10; i++) {
-    switch(i) {
-      case(2):
-      case(3):
-      case(6):
-      case(7):
-      for (int j=0; j<8; j++) {
-        // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
-        x =  transformX(-(25+(j*100)), 50*i);
-        y =  transformY(-(25+(j*100)), 50*i);
+    switch(illusion) {
+      case ('c'):
+      switch(i) {
+        case(2):
+        case(3):
+        case(6):
+        case(7):
+        for (int j=0; j<8; j++) {
+          // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
+          x =  transformX(-(25+(j*100)), 50*i);
+          y =  transformY(-(25+(j*100)), 50*i);
 
-        // Draws diamonds with BLACK at top/bottom and WHITE at left/tight.
-        fill(255);
-        rect(x, y, -8, -8);
-        rect(x, y, 8, 8);
-        fill(0);
-        rect(x, y, 8, -8);
-        rect(x, y, -8, 8);
+          // Draws diamonds with BLACK at top/bottom and WHITE at left/tight.
+          fill(255);
+          rect(x, y, -8, -8);
+          rect(x, y, 8, 8);
+          fill(0);
+          rect(x, y, 8, -8);
+          rect(x, y, -8, 8);
 
-        // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
-        x =  transformX(-(75+(j*100)), 50*i);
-        y =  transformY(-(75+(j*100)), 50*i);
+          // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
+          x =  transformX(-(75+(j*100)), 50*i);
+          y =  transformY(-(75+(j*100)), 50*i);
 
-        // Draws diamonds with WHITE at top/bottom and BLACK at left/tight.
-        fill(0);
-        rect(x, y, -8, -8);
-        rect(x, y, 8, 8);
-        fill(255);
-        rect(x, y, 8, -8);
-        rect(x, y, -8, 8);
+          // Draws diamonds with WHITE at top/bottom and BLACK at left/tight.
+          fill(0);
+          rect(x, y, -8, -8);
+          rect(x, y, 8, 8);
+          fill(255);
+          rect(x, y, 8, -8);
+          rect(x, y, -8, 8);
+        }
+        break;
+        case(1):
+        case(4):
+        case(5):
+        case(8):
+        case(9):
+        for (int j=0; j<8; j++) {
+          // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
+          x =  transformX(-(25+(j*100)), 50*i);
+          y =  transformY(-(25+(j*100)), 50*i);
+
+          // Draws diamonds with BLACK at top/bottom and WHITE at left/tight.
+          fill(0);
+          rect(x, y, -8, -8);
+          rect(x, y, 8, 8);
+          fill(255);
+          rect(x, y, 8, -8);
+          rect(x, y, -8, 8);
+
+          // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
+          x =  transformX(-(75+(j*100)), 50*i);
+          y =  transformY(-(75+(j*100)), 50*i);
+
+          // Draws diamonds with WHITE at top/bottom and BLACK at left/tight.
+          fill(255);
+          rect(x, y, -8, -8);
+          rect(x, y, 8, 8);
+          fill(0);
+          rect(x, y, 8, -8);
+          rect(x, y, -8, 8);
+        }
+        break;
       }
       break;
-      case(1):
-      case(4):
-      case(5):
-      case(8):
-      case(9):
-      for (int j=0; j<8; j++) {
-        // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
-        x =  transformX(-(25+(j*100)), 50*i);
-        y =  transformY(-(25+(j*100)), 50*i);
+      case('s'):
+      switch(i) {
+        case(1):
+        case(2):
+        case(3):
+        case(4):
+        case(5):
+        case(6):
+        case(7):
+        case(8):
+        case(9):
+        for (int j=0; j<8; j++) {
+          // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
+          x =  transformX(-(25+(j*100)), 50*i);
+          y =  transformY(-(25+(j*100)), 50*i);
 
-        // Draws diamonds with BLACK at top/bottom and WHITE at left/tight.
-        fill(0);
-        rect(x, y, -8, -8);
-        rect(x, y, 8, 8);
-        fill(255);
-        rect(x, y, 8, -8);
-        rect(x, y, -8, 8);
+          // Draws diamonds with BLACK at top/bottom and WHITE at left/tight.
+          fill(0);
+          rect(x, y, -8, -8);
+          rect(x, y, 8, 8);
+          fill(255);
+          rect(x, y, 8, -8);
+          rect(x, y, -8, 8);
 
-        // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
-        x =  transformX(-(75+(j*100)), 50*i);
-        y =  transformY(-(75+(j*100)), 50*i);
+          // Takes cartesian coordinates and calculates its' equivalent on the rotated axis plain.
+          x =  transformX(-(75+(j*100)), 50*i);
+          y =  transformY(-(75+(j*100)), 50*i);
 
-        // Draws diamonds with WHITE at top/bottom and BLACK at left/tight.
-        fill(255);
-        rect(x, y, -8, -8);
-        rect(x, y, 8, 8);
-        fill(0);
-        rect(x, y, 8, -8);
-        rect(x, y, -8, 8);
+          // Draws diamonds with BLACK at top/bottom and WHITE at left/tight.
+          fill(0);
+          rect(x, y, -8, -8);
+          rect(x, y, 8, 8);
+          fill(255);
+          rect(x, y, 8, -8);
+          rect(x, y, -8, 8);
+        }
+        break;
       }
       break;
     }
