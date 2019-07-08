@@ -27,9 +27,7 @@ Estudiar los [patrones de diseño de shaders](http://visualcomputing.github.io/S
 
 * Se implementó una técnica de *Bump mapping* en "tiempo real", en la cual la fuente de luz se desplaza diagonalmente a través de la imagen, revelando el bump map. De manera similar a este gif de wikipedia.
 
-<p align="center">
 ![Bump mapping gif](https://upload.wikimedia.org/wikipedia/commons/9/93/FakeBump2D-animation.gif)
-</p>
 
 
 
