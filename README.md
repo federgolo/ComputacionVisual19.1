@@ -18,3 +18,7 @@ Fecha: 12/05/2019
 ### Tercer taller: [raster](https://github.com/federgolo/ComputacionVisual19.1/tree/master/Taller%203)
 
 Fecha: 02/06/2019
+
+### Cuarto taller: [shaders](https://github.com/federgolo/ComputacionVisual19.1/tree/master/Taller%204)
+
+Fecha: 07/07/2019
