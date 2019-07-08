@@ -18,7 +18,7 @@ boolean triangleHint = true;
 boolean gridHint = true;
 boolean debug = true;
 // 3. Use FX2D, JAVA2D, P2D or P3D
-String renderer = P3D;
+String renderer = P2D;
 
 // 4. Window dimension
 int dim = 9;
