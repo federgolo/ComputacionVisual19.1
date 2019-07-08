@@ -21,6 +21,13 @@ Estudiar los [patrones de diseño de shaders](http://visualcomputing.github.io/S
 
 ## Informe
 
-* Al momento de aplicar las máscaras, creamos varios archivos .glsl con diferentes matrices de convolución (representadas como una suma de productos entre los valores de la matriz y los componentes rgb del fragColor) este filtro se le aplica a la imagen en su totalidad, haciendo uso de un shader.
+* Al momento de aplicar las máscaras, creamos varios archivos .glsl con diferentes matrices de convolución (representadas como una suma de productos entre los valores de la matriz y los componentes rgb del fragColor) este filtro se le aplica a la imagen en su totalidad, haciendo uso de un shader. En contraste, al momento de aplicar las máscaras, creamos un arreglo con diferentes matrices de convolución, este filtro se le aplica a la imagen/video en un segmento o en su totalidad, haciendo recorrer la matriz sobre el canvas y aplicando la convolución sobre cada pixel. Comparando el desempeño del programa en ambas versiones, al usarse los shaders el desempeño es mucho mejor, ya que presenta un framerate constante de 60fps, a diferencia del sketch de las máscaras de convolución, en el cual el framerate se limita a los 30 fps aproximadamente.
+
 * Para la fusión de fuentes de luces se dividió la tarea entre fragmentShader y vertexShades para poder apreciar como varían, el punto desde el que se emite la luz es controlado con la posición de mouse y la "combinación de luces" es controlada con el click.
+
+* Se implementó una técnica de *Bump mapping* en "tiempo real", en la cual la fuente de luz se desplaza diagonalmente a través de la imagen, revelando el bump map. De manera similar a este gif de wikipedia.
+
+![Bump mapping gif](https://upload.wikimedia.org/wikipedia/commons/9/93/FakeBump2D-animation.gif)
+
+
 
