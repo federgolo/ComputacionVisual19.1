@@ -40,7 +40,7 @@ float[][] matrix;
 
 void setup() {
   size(1020, 630);
-  frameRate(14);
+  frameRate(32);
 
   myImg = loadImage("nba.jpg");
   imgWidth = myImg.width;
@@ -61,11 +61,6 @@ void setup() {
 }
 
 void draw() {
-
-  //pg.beginDraw();
-  //pg.text(frameRate, 5, 10);
-  //pg.endDraw();
-  //image(pg, 5, 15);
 
   switch(state) {
   case 0:
@@ -151,14 +146,6 @@ void draw() {
         pg5.pixels[loc] = c;
       }
     }
-
-    //for (int x = video.width / 2; x < video.width; x++) {
-    //  for (int y = 0; y < video.height; y++ ) {
-    //    int loc = x + y*video.width;
-    //    int avg = int((red(video.pixels[loc]) + green(video.pixels[loc]) + blue(video.pixels[loc])) / 3);
-    //    pg5.pixels[loc] = color(avg);
-    //  }
-    //}
     pg5.updatePixels();
   }
   pg5.endDraw();
